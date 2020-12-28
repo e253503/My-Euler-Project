@@ -11,11 +11,14 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 import seaborn as sns
 import math
+from tqdm import tqdm
+from math import *
+import time
 #%% Eu 1
 # Multiples of 3 and 5
 x=[]
 xsum = 0
-for i in range(1,1000):
+for i in tqdm(range(1,1000)):
     if (i % 3 == 0) or (i % 5 == 0):
         x.append(i)
         xsum += i
@@ -42,7 +45,7 @@ p  = [1]
 p2 = []
 count=0
 def findPrimes(x):
-    for i in range(2,int(x**(1/2))):
+    for i in tqdm(range(2,int(x**(1/2)))):
        if x % i == 0:
            p.append(i)
     # print(p)
@@ -80,7 +83,7 @@ p[-1]
 x = range(1,21)
 x1 = list(x)
 y= list()
-for i in range(2519,1000000000):
+for i in tqdm(range(2519,1000000000)):
     for j in x:
         if i % j ==0:
             y.append(j)
@@ -117,7 +120,7 @@ def thlPrime(k):
     if k == 0:
         return t.remove(2)
     while x < k-1:
-        b = range(2,int(p**1/2))
+        b = tqdm(range(2,int(p**1/2)))
         c = 0
         for i in b:
             if p % i == 0:
@@ -356,10 +359,44 @@ print('x9:\n',x9,'\nx10:\n',x10)
 x10T.sort()
 x10T[-1]
 
+
+
 #%% Eu 12
 # Highly divisible triangular number
+m = {}
+def seq(x):
+    start_time = time.time()
 
-# In progress. There was some code I made but it worked so slow, I will remake it. 
+    if x not in m:
+        if x == 1:  
+            m[x] = 1
+        else:
+            m[x] = seq(x-1)[0] + 1
+    return sum(m),("--- %s seconds ---" % (time.time() - start_time))
+#seq(1)
+
+# Gives numbers of divisors of x
+def divN(x):
+    start_time = time.time()
+    c = 0
+    for i in range(1,(int((x)**(1/2))+1)):
+        if x % i == 0:
+            c += 1
+    return c*2,("--- %s seconds ---" % (time.time() - start_time))
+divN(6)
+
+def sd(x):
+    a = 1
+    while True:
+        a1 = seq(a)[0]
+        a2 = divN(a1)[0]
+        if a2 == x:
+            return ('divisor number: ', a2,'Our Tri Number: ',a1)
+        elif a2 > x:
+            x += 1
+            a = 1
+        a += 1
+sd(500)
 
 
 #%% Eu 13 
@@ -504,10 +541,52 @@ for i in str(sT)[0:10]:
     k += i
 print(d,e,sT,k)
 
-
 #%% Eu 14
 # Longest Collatz sequence
-# It did not work out, I will make it in soon.  
+m = {}                               
+def cs(n):
+    if n not in m:                   
+        if n == 1:                     
+            m[n] = 1                 
+        elif n % 2 == 0:
+            m[n] = cs(int(n / 2)) + 1
+        else:
+            m[n] = cs(3 * n + 1) + 1
+    return m[n]                     
+cs(13)
+x = {}
+for i in tqdm(range(13,10**6)):
+    x[i] = cs(i)
+x.values
+xd = {k: v for k, v in sorted(x.items(), key=lambda item: item[1])}
+xdv = list(xd.values())[-1]
+def get_key(val):
+    for key, value in xd.items():
+         if val == value:
+             return key
+print('\nNumber: ', xdv, 'Length of Chain: ', get_key(xdv))
+
+#%%
+import time
+start = time.time()
+
+def collatzSeq (n):
+    chainNumber = 1
+    n1 = n
+    while n1 != 1:
+        if n1 % 2 == 0:
+            n1 = n1/2
+            chainNumber += 1
+        else:
+            n1 = (3*n1) + 1
+            chainNumber += 1
+    return [chainNumber, n]
+
+fullList = []
+for i in range(2, 1000000):
+    fullList.append(collatzSeq(i))
+sortedList = sorted(fullList, reverse=True)
+print(sortedList[:1])
 
 # %% Eu 15
 # Lattice paths

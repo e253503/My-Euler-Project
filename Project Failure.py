@@ -32,6 +32,7 @@ def exteu4():
             print(i)
     print("ended")
     p[-1]
+exteu4()
 #%% Problem 4 Extension
 abc =  1000
 type(str(abc))
@@ -186,9 +187,6 @@ print(a)
 
 
 
-
-
-
 #%%
 # Eu 8
 # convert string, split them, convert them int again
@@ -333,12 +331,10 @@ fail()
 #fail()
 
 
-
-
-
-
-
-
+#%%
+offset = 10
+for i in range(offset, 15 + offset):
+    print(i)
 
 
 #%%
@@ -480,7 +476,8 @@ list(map(int,b)
 
 
 
-#%% Eu 8 13 adjacent numbers
+#%% Eu 8 
+# 13 adjacent numbers
 import functools 
 
 num = '73167176531330624919225119674426574742355349194934'
@@ -625,7 +622,6 @@ for i in x2:
 #        break
 print(x3)
 #%%
-#%%
 xT = pd.DataFrame()
 c = 0
 for i in x4:
@@ -641,7 +637,7 @@ for i in range(2,9),a:
     print(i) 
 a[11]
 
-#%% EU 12 Fail
+#%% EU 12 Fail 2
 k = int()
 
 # xLDs = list()
@@ -777,3 +773,109 @@ def durcan(x):
         b += 1
 durcan(501)
 
+#%% Eu 12 Fail 3
+# Highly divisible triangular number
+from tqdm import tqdm
+#%%
+
+def divisor(n):
+    nL=[n]
+    for i in tqdm(range(1,int((n/2))+1)):
+        if n % i == 0:
+            nL.append(i)
+    return len(nL)
+
+def tridiv(i):
+    a = 1
+    b = 0
+    while True:
+        if b < a:
+            b = a
+        a += 1
+        b = a + b
+        if divisor(b) == i:
+            print('\n', f'Number of Divisor: {i}','\n','Number:', b)
+            break
+tridiv(20)
+
+# Fail 4
+
+# They  give sum of points up to x
+m = {}
+def seq(x):
+    start_time = time.time()
+
+    if x not in m:
+        if x == 1:  
+            m[x] = 1
+        else:
+            m[x] = seq(x-1)[0] + 1
+    return sum(m),("--- %s seconds ---" % (time.time() - start_time))
+#seq(1)
+
+def triangleNumber(n):
+    start_time = time.time()
+    return sum ( [ i for i in range(1, n + 1) ] ),("--- %s seconds ---" % (time.time() - start_time))
+seq(500),triangleNumber(500)
+# Fail 5
+
+# It gives, Up to a point-last- highest divison one. 
+def first(Last):
+    x = 1
+    y = Last
+    for i in tqdm(range(1,Last)):
+        a = divN(seq(i))
+        if a > x:
+            x = a
+            y = seq(i)
+    return x,y
+first(4)
+# Fail
+def fd(l):
+    a= 2
+    while True:
+        if divN(seq(a)) == l:
+            return a+1
+        else:
+            a += 1
+fd(5)
+
+# Fail 6
+# In progress. There was some code I made but it worked so slow, I will remake it. 
+
+# They  give sum of points up to x
+m = {}
+def seq(x):
+    start_time = time.time()
+
+    if x not in m:
+        if x == 1:  
+            m[x] = 1
+        else:
+            m[x] = seq(x-1)[0] + 1
+    return sum(m),("--- %s seconds ---" % (time.time() - start_time))
+#seq(1)
+
+def triangleNumber(n):
+    start_time = time.time()
+    return sum ( [ i for i in range(1, n + 1) ] ),("--- %s seconds ---" % (time.time() - start_time))
+seq(500),triangleNumber(500)
+# Fail 7
+
+def sd(l): 
+    global m 
+    a = 1
+    while True:
+        a1 = seq(a)
+        a2 = divN(a1)[0]
+        if l == a2:
+            return a1,a 
+        a +=1
+        m = {}
+        if a2 > l:
+            l += 1
+            a = 1
+            m = {}
+sd(5)
+
+#%%
