@@ -7,3 +7,5 @@ After my exams finish, I will continue to upload.
 I would like to thank Project Euler creators and I hope my trials can be useful for someone else. 
 May the force be with you
 Orcun
+Edit: 28.12.2020
+I solved 2 of them and updated solved questions up to 17.
