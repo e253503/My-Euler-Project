@@ -1,11 +1,1 @@
-# My Euler Project
-In this project, I uploaded how I solved Euler Project Problems. 
-All problems are taken by this website: https://projecteuler.net/about
-I spent a lot of hours in 1.5 week and I solved 15 of them.
-This is also reason why there is also Project Failures. I included my mistakes and codes I wrote which are enjoyful. In this way, I can see my mistakes more clear.
-After my exams finish, I will continue to upload.
-I would like to thank Project Euler creators and I hope my trials can be useful for someone else. 
-May the force be with you
-Orcun
-Edit: 28.12.2020
-I solved 2 of them and updated questions I solved so there are 17 answers now.
+In this project, I uploaded how I solved Euler Project Problems. All problems are taken by this website: https://projecteuler.net/about I spent a lot of hours in 1.5 weeks and I solved 15 of them. This is also the reason why there are also Project Failures. I included my mistakes and codes I wrote which are enjoyful. In this way, I can see my mistakes more clearly. After my exams finish, I will continue to upload. I would like to thank Project Euler creators and I hope my trials can be useful for someone else. May the force be with you Orcun Edit: 28.12.2020 I solved 2 of them and updated the questions I solved so there are 17 answers now.
